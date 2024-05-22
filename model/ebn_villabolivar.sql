@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-05-2024 a las 23:39:00
+-- Tiempo de generación: 22-05-2024 a las 23:32:11
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -97,15 +97,42 @@ CREATE TABLE `nivel_corte` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipo_usuario`
+--
+
+CREATE TABLE `tipo_usuario` (
+  `rol_user` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`rol_user`) VALUES
+('Control De Estudio'),
+('Director'),
+('Soporte Técnico');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
   `ci` varchar(12) NOT NULL,
   `nombre` varchar(150) NOT NULL,
-  `apelido` varchar(150) NOT NULL,
-  `tipo_usuario` varchar(150) NOT NULL
+  `contrasena` varchar(8) NOT NULL,
+  `tipo_usuario` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`ci`, `nombre`, `contrasena`, `tipo_usuario`) VALUES
+('V-28.688.094', 'Jorge Vaquero', '12345678', ''),
+('V-30.478.198', 'Elias Gonzalez', '12345678', '');
 
 --
 -- Índices para tablas volcadas
@@ -151,10 +178,17 @@ ALTER TABLE `nivel_corte`
   ADD KEY `nivel_corte_ibfk_2` (`cod_nivel1`);
 
 --
+-- Indices de la tabla `tipo_usuario`
+--
+ALTER TABLE `tipo_usuario`
+  ADD PRIMARY KEY (`rol_user`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`ci`);
+  ADD PRIMARY KEY (`ci`),
+  ADD KEY `tipo_usuario` (`tipo_usuario`) USING BTREE;
 
 --
 -- Restricciones para tablas volcadas
