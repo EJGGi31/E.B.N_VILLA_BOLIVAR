@@ -40,14 +40,14 @@ $records = array();
     }
 }
 
-//Update Base de datos...
+// Update Base de datos...
 
-if(!empty($_POST) && isset($_POST['3'])){
+if (!empty($_POST) && isset($_POST['3'])) {
     $fields = [];
     $values = [];
     $types = '';
 
-    if(isset($_POST['ci_escolar']) && !empty(trim($_POST['ci_escolar']))){
+    if (isset($_POST['ci_escolar']) && !empty(trim($_POST['ci_escolar']))) {
         $fields[] = 'ci_escolar = ?';
         $values[] = trim($_POST['ci_escolar']);
         $types .= 's';
@@ -78,25 +78,24 @@ if(!empty($_POST) && isset($_POST['3'])){
         $types .= 's';
     }
 
-    if(!empty($fields)){
+    if (!empty($fields)) {
         $query = "UPDATE alumno SET " . implode(', ', $fields) . " WHERE ci_escolar = ?";
         $stmt = $connect->prepare($query);
         $values[] = $_POST['ci_escolar'];
         $types .= 's';
         $stmt->bind_param($types, ...$values);
 
-        if(!$stmt->execute()){
+        if (!$stmt->execute()) {
             die("Error al actualizar: " . $stmt->error);
         }
     }
 }
 
-
 //Delete Base de datos...
 
 if(!empty($_POST) && isset($_POST['4'])){
-    if(isset($_POST['delete']['ci_escolar'])){
-        $ci_escolar = trim($_POST['delete']['ci_escolar']);
+    if(isset($_POST['ci_escolar'])){
+        $ci_escolar = trim($_POST['ci_escolar']);
 
         if(!empty($ci_escolar)){
             $delete = $connect->prepare("DELETE FROM alumno WHERE ci_escolar = ?");
@@ -107,3 +106,89 @@ if(!empty($_POST) && isset($_POST['4'])){
         }
     }
 }
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Alumnos</title>
+</head>
+<body>
+    <h1>Formulario de Alumnos</h1>
+    <form action="alumno.php" method="post">
+        <label for="ci_escolar">CI Escolar:</label>
+        <input type="text" id="ci_escolar" name="ci_escolar" required>
+
+        <label for="nombres">Nombres:</label>
+        <input type="text" id="nombres" name="nombres" required>
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required>
+
+        <label for="genero">Género:</label>
+        <input type="text" id="genero" name="genero" required>
+
+        <label for="fecha_nac">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nac" name="fecha_nac" required>
+
+        <label for="lugar_nac">Lugar de Nacimiento:</label>
+        <input type="text" id="lugar_nac" name="lugar_nac" required>
+
+        <input type="submit" name="1" value="Registrar">
+    </form>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Datos</title>
+</head>
+<body>
+    <h1>Actualizar Datos del Alumno</h1>
+    <form method="POST" action="alumno.php">
+        <label for="ci_escolar">CI Escolar:</label>
+        <input type="text" id="ci_escolar" name="ci_escolar">
+
+        <label for="nombres">Nombres:</label>
+        <input type="text" id="nombres" name="nombres">
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos">
+
+        <label for="genero">Género:</label>
+        <input type="text" id="genero" name="genero">
+
+        <label for="fecha_nac">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nac" name="fecha_nac">
+
+        <label for="lugar_nac">Lugar de Nacimiento:</label>
+        <input type="text" id="lugar_nac" name="lugar_nac">
+
+        <input type="submit" name="3" value= "Actualizar">
+    </form>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Registro</title>
+</head>
+<body>
+    <h1>Eliminar Registro de Alumno</h1>
+    <form method="POST" action="alumno.php">
+        <label for="ci_escolar">CI Escolar:</label>
+        <input type="text" id="ci_escolar" name="ci_escolar" required>
+        <!-- Agrega más campos aquí si es necesario -->
+
+        <input type="submit" name="4" value="Eliminar">
+    </form>
+</body>
+</html>
