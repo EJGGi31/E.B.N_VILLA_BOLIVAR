@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2024 a las 23:32:11
+-- Tiempo de generación: 29-05-2024 a las 08:18:08
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,24 +39,13 @@ CREATE TABLE `alumno` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alumno_cortes`
---
-
-CREATE TABLE `alumno_cortes` (
-  `ci_escolar2` varchar(15) NOT NULL,
-  `cod_corte2` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `cortes`
 --
 
 CREATE TABLE `cortes` (
   `cod_corte` int(15) NOT NULL,
-  `lapso` int(3) NOT NULL,
-  `literal` int(1) NOT NULL
+  `lapso` varchar(3) NOT NULL,
+  `resumen` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -67,31 +56,41 @@ CREATE TABLE `cortes` (
 
 CREATE TABLE `nivel` (
   `cod_nivel` int(15) NOT NULL,
-  `grado` varchar(15) NOT NULL,
+  `grado` varchar(3) NOT NULL,
   `seccion` varchar(1) NOT NULL,
   `matricula` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Volcado de datos para la tabla `nivel`
+--
+
+INSERT INTO `nivel` (`cod_nivel`, `grado`, `seccion`, `matricula`) VALUES
+(1, '1er', 'A', 30),
+(2, '1er', 'B', 30),
+(3, '2do', 'A', 30),
+(4, '2do', 'B', 30),
+(5, '3er', 'A', 30),
+(6, '3er', 'B', 30),
+(7, '4to', 'A', 30),
+(8, '4to', 'B', 30),
+(9, '5to', 'A', 30),
+(10, '5to', 'B', 30),
+(11, '6to', 'A', 30),
+(12, '6to', 'B', 30);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `nivel_alumnos`
+-- Estructura de tabla para la tabla `preguntas_seguridad`
 --
 
-CREATE TABLE `nivel_alumnos` (
-  `cod_nivel2` int(15) NOT NULL,
-  `ci_escolar1` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `nivel_corte`
---
-
-CREATE TABLE `nivel_corte` (
-  `cod_nivel1` int(15) NOT NULL,
-  `cod_corte1` int(15) NOT NULL
+CREATE TABLE `preguntas_seguridad` (
+  `cod_pregunta` int(4) NOT NULL,
+  `1era_seguridad` varchar(150) NOT NULL,
+  `respuesta_1` varchar(150) NOT NULL,
+  `2da_seguridad` varchar(150) NOT NULL,
+  `respuesta_2` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -120,19 +119,13 @@ INSERT INTO `tipo_usuario` (`rol_user`) VALUES
 --
 
 CREATE TABLE `usuario` (
+  `nacionalidad` varchar(2) NOT NULL,
   `ci` varchar(12) NOT NULL,
   `nombre` varchar(150) NOT NULL,
+  `apellido` varchar(150) NOT NULL,
   `contrasena` varchar(8) NOT NULL,
   `tipo_usuario` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`ci`, `nombre`, `contrasena`, `tipo_usuario`) VALUES
-('V-28.688.094', 'Jorge Vaquero', '12345678', ''),
-('V-30.478.198', 'Elias Gonzalez', '12345678', '');
 
 --
 -- Índices para tablas volcadas
@@ -143,13 +136,6 @@ INSERT INTO `usuario` (`ci`, `nombre`, `contrasena`, `tipo_usuario`) VALUES
 --
 ALTER TABLE `alumno`
   ADD PRIMARY KEY (`ci_escolar`);
-
---
--- Indices de la tabla `alumno_cortes`
---
-ALTER TABLE `alumno_cortes`
-  ADD KEY `ci_escolar2` (`ci_escolar2`),
-  ADD KEY `cod_corte2` (`cod_corte2`);
 
 --
 -- Indices de la tabla `cortes`
@@ -164,18 +150,10 @@ ALTER TABLE `nivel`
   ADD PRIMARY KEY (`cod_nivel`);
 
 --
--- Indices de la tabla `nivel_alumnos`
+-- Indices de la tabla `preguntas_seguridad`
 --
-ALTER TABLE `nivel_alumnos`
-  ADD KEY `ci_escolar1` (`ci_escolar1`),
-  ADD KEY `cod_nivel2` (`cod_nivel2`);
-
---
--- Indices de la tabla `nivel_corte`
---
-ALTER TABLE `nivel_corte`
-  ADD KEY `cod_corte1` (`cod_corte1`),
-  ADD KEY `nivel_corte_ibfk_2` (`cod_nivel1`);
+ALTER TABLE `preguntas_seguridad`
+  ADD PRIMARY KEY (`cod_pregunta`);
 
 --
 -- Indices de la tabla `tipo_usuario`
@@ -189,31 +167,6 @@ ALTER TABLE `tipo_usuario`
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`ci`),
   ADD KEY `tipo_usuario` (`tipo_usuario`) USING BTREE;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `alumno_cortes`
---
-ALTER TABLE `alumno_cortes`
-  ADD CONSTRAINT `alumno_cortes_ibfk_1` FOREIGN KEY (`ci_escolar2`) REFERENCES `alumno` (`ci_escolar`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `alumno_cortes_ibfk_2` FOREIGN KEY (`cod_corte2`) REFERENCES `cortes` (`cod_corte`);
-
---
--- Filtros para la tabla `nivel_alumnos`
---
-ALTER TABLE `nivel_alumnos`
-  ADD CONSTRAINT `nivel_alumnos_ibfk_1` FOREIGN KEY (`ci_escolar1`) REFERENCES `alumno` (`ci_escolar`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `nivel_alumnos_ibfk_2` FOREIGN KEY (`cod_nivel2`) REFERENCES `nivel` (`cod_nivel`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `nivel_corte`
---
-ALTER TABLE `nivel_corte`
-  ADD CONSTRAINT `nivel_corte_ibfk_1` FOREIGN KEY (`cod_corte1`) REFERENCES `cortes` (`cod_corte`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `nivel_corte_ibfk_2` FOREIGN KEY (`cod_nivel1`) REFERENCES `nivel` (`cod_nivel`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

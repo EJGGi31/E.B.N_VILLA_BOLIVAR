@@ -26,7 +26,7 @@ if(!empty($_POST) && isset($_POST['1'])){
 //Read Base de Datos...
 
 
-if(isset($_POST['2'])){
+
 
 $records = array();
 
@@ -38,7 +38,7 @@ $records = array();
             $read->free();
         }
     }
-}
+
 
 // Update Base de datos...
 
@@ -116,6 +116,11 @@ if(!empty($_POST) && isset($_POST['4'])){
     <title>Formulario de Alumnos</title>
 </head>
 <body>
+
+    <h1>Records</h1>
+
+    <?php print_r($records); ?>
+
     <h1>Formulario de Alumnos</h1>
     <form action="alumno.php" method="post">
         <label for="ci_escolar">CI Escolar:</label>
@@ -186,8 +191,6 @@ if(!empty($_POST) && isset($_POST['4'])){
     <form method="POST" action="alumno.php">
         <label for="ci_escolar">CI Escolar:</label>
         <input type="text" id="ci_escolar" name="ci_escolar" required>
-        <!-- Agrega más campos aquí si es necesario -->
-
         <input type="submit" name="4" value="Eliminar">
     </form>
 </body>
