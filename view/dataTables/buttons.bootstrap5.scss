@@ -1,0 +1,102 @@
+
+@import 'mixins.scss';
+@import 'common.scss';
+
+div.dt-buttons {
+	div.btn-group {
+		position: initial;
+	}
+
+	div.dropdown-menu {
+		margin-top: 4px;
+		width: 200px;
+
+		.dt-button {
+			position: relative;
+		}
+
+		div.dt-button-split {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			align-content: flex-start;
+			align-items: stretch;
+
+			a:first-child {
+				min-width: auto;
+				flex: 1 0 50px;
+				padding-right: 0;
+			}
+
+			button:last-child {
+				min-width: 33px;
+				flex: 0;
+				background: transparent;
+				border: none;
+				line-height: 1rem;
+				color: var(--bs-dropdown-link-color);
+				padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+				overflow: visible;
+
+				&:hover {
+					color: var(--bs-dropdown-link-hover-color);
+					background-color: var(--bs-dropdown-link-hover-bg);
+				}
+
+				&:after {
+					position: relative;
+					left: -3px;
+				}
+			}
+		}
+
+		@include dtb-fixed-collection();
+	}
+
+	span.dt-button-spacer {
+		&.empty {
+			margin: 1px;
+		}
+
+		&.bar {
+			&:empty {
+				height: inherit;
+			}
+		}
+	}
+
+	.btn.processing {
+		@include dtb-processing();
+	}
+}
+
+div.dt-button-background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+}
+
+@media screen and (max-width: 767px) {
+	div.dt-buttons {
+		float: none;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 0.5em;
+
+		a.btn {
+			float: none;
+		}
+	}
+}
+
+:root[data-bs-theme="dark"] {
+	div.dropdown-menu.dt-button-collection.fixed  {
+		background-color: rgb(33, 37, 41);
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		border-radius: 8px;
+	}
+}

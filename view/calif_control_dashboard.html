@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Control de calificaciones</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="view/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="view/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="/view/dataTables/dataTables.bootstrap5.css">
+  <link rel="stylesheet" href="/view/dataTables/button.bootstrap5.scss">
+  <link rel="stylesheet" href="/view/dataTables/button.bootstrap.scss">
+  <link rel="stylesheet" href="/view/dataTables/button.dataTables.scss">
+  <link rel="stylesheet" href="/view/sweetalert2-main/src/sweetalert2.scss">
+  <script src="/view/jquery/jquery-3.7.1.min.js"></script>
+  <script src="/view/fontawesome/js/all.min.js"></script>
+  <script src="/view/dataTables/button.bootstrap5.js"></script>
+  <script src="/view/dataTables/button.bootstrap.js"></script>
+  <script src="/view/dataTables/dataTables.js"></script>
+  <script src="/view/dataTables/dataTables.html5.js"></script>
+  <script src="/view/dataTables/buttonjqueryui.js"></script>
+  <script src="/view/js/alerts.js"></script>
+  <script src="/view/sweetalert2-main/src/sweetalert2.js"></script>
+</head>
+
+
+<body>
+ 
+   <!-- Navbar Start -->
+   <div class="container-fluid p-0" syle="border-radius: 0px 0px 20px 20px">
+    <nav class="navbar navbar-expand-lg navbar-primary py-4 py-lg-0 px-lg-5 p-5 flex-colum"   style="background-color:rgb(47, 66, 175) ;border-radius: 0px 0px 13px 13px" height="100%" >
+     
+        <a href="index.php" class="navbar-brand ml-lg-3">
+        <h1 class="m-0 text-uppercase  text-white">E.B.N "Villa Bolívar"</h1>
+      </a>
+    
+      <div class="collapse navbar-collapse justify-content-end px-lg-6" id="navbarCollapse" style= "border-radius: 40px 0px 40px 0px"; >
+        <div class="navbar-nav mx-auto py-0">
+          <a href="index.php" class="nav-item nav-link active px-lg-15 "></a>
+        </div>
+        <a href="/index.html" class="btn text-danger py-2 px-4 d-none d-lg-block hover" style="color: rgb(175, 8, 8);" class="fa fa-power off"  aria-hidden="true"><span class="fa fa-power-off" aria-hidden="true"></span> Cerrar sesión</a>
+      </div>
+    </nav>
+  </div>
+  <!-- Navbar End -->
+
+  <!--=======================================TABLA_ALUMNOS ==========================================-->
+
+<div class="container  rounded col-lg 6 card" style="background-color: white">
+  <div class="container">
+      <div class="container-body">
+  <h2 class="text-black card-header display-4" style="padding: 15px;">Administrar Cortes</h2>
+  <table class="table table-hover table-bordered table-responsive">
+      <thead>
+          <tr>
+              <th>Codigo</th>
+              <th> Lapso</th>
+              <th>Resumen </th>
+          </tr>
+      </thead>
+      <tbody>
+          
+      </tbody>
+  </table>
+</div>
+
+<div class="container rounded col-lg 6" style="padding: 20px;">
+  <form action='../controller/cortes.php' method='POST'>
+      <strong> Inserte el codigo para eliminar</strong>
+      <input type="text" name="ci" placeholder="Ej: 00.000.000">
+      <button class="btn btn-outline-success"> <strong> Eliminar </strong> </button>
+  </form>
+</div>
+
+
+
+
+  <!------- Registro de notas--------->
+  <br> <div class="section-title position-relative mb-1">
+ <div class="container"
+  <div class=" fadeInDown">
+    <div id="formContent" class="sidebar">
+      <!-- Tabs Titles -->
+
+      <!---=============================CORTES=================================================-->
+  
+  
+  <!------------------------------------------REGISTRO--------------------------------------->
+
+  <div id="TodoRegistros">
+  <div class="container d-flex-row">
+  <div class="wrapper fadeInDown">
+  <div id="wrapper fadeInDown">
+    
+
+      <p> <h1 class="display-4 text-start panel login-title d-inline-block" style="margin-right: 40pc;" >Registro</h1></p>
+  
+
+  <div class="" class="col-3 d-flex p-2 ">
+
+  <div class="justify-content-star d-flex">
+    <div class="justify-content-star d-flex">
+
+      <button href="calif_control_dashboard.html" class="sm-1 text-start panel login-title d-inline-block btn btn-warning text-white" > <spam  class="fa fa-sticky-note"></spam>Registrar </button>
+
+      <button href="calif_actualizar.html" class="sm-1 text-start panel login-title d-inline-block btn btn-primary text-white" > <spam  class="fa  fa-refresh" aria-hidden="true"></spam>Actualizar </button>
+
+      <button href="calif_borrar.html" class="sm-1 text-start panel login-title d-inline-block btn btn-danger text-white" > <spam  class="fa fa-eraser" aria-hidden="true"></spam>Eliminar  </button></div>
+  </div>
+
+  </>
+
+      <form action='../controller/cortes.php' method='POST' class=" form-control card justify-content-center login-box"  style="margin-top: 40px;"> 
+
+          <div class="panel login-box">
+              <div class="panel login-body">
+      
+                
+              <div class="mb-3 row">
+                  <label for="inputText" for="ci_escolar" class="col-sm-2 col-form-label text-black"> <spam class="fa fa-users" aria-hidden="true"></spam>Lapso</label>
+                  <div class="col-sm-10">
+                    <input type="text" id="ci_escolar" name="ci_escolar" class="form-control" required>
+                  </div>
+                </div>
+
+                <div class="mb-3 row">
+                  <label for="inputPassword" for="nombre" class="col-sm-2 col-form-label text-black">  <spam class="fa fa-user"  aria-hidden="true"></spam>Resumen</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                  </div>
+                </div>
+      
+      <div class="btn btn-primary  justify-content-center">
+        <button  type="submit" name="1"  class="btn btn-primary py-2 px-4 d-none d-lg-block"  style="border-radius: 25x 25x 25px 25px" required>Registrar </button>
+
+
+
+      </div>
+          </div>
+      
+      
+      </form>
+
+    </div>
+  </div>
+<!-----------------------FIN_REGISTRO--------------------------------->
+
+<!---========================= FIN_CORTES===================================================--->
+
+</body>
+</html>

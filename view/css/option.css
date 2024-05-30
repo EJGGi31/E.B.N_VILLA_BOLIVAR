@@ -1,0 +1,15 @@
+.wraper{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background: local;
+}
+.wraper btn {
+    display: grid;
+    height: 20px;
+    width: 50px;
+}
+
+#Notas{
+    display: none;
+}
