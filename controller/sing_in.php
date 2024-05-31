@@ -21,26 +21,3 @@ if(!empty($_GET)){
 }
 
 ?>
-
-<!DOCTYPE html>
-
-<html>
-    <head>
-        <title>Registro</title>        
-    </head>
-
-    <body>
-        <form action="sing_in.php" method="GET">
-            <div class="field">
-                <label for="ci">Cedula</label>
-                <input type="text" name="ci" id="ci" autocomplete="off">
-            </div>
-
-            <div class="field">
-                <label for="contrasena">Contraseña</label>
-                <input type="password" name="contrasena" id="contrasena" autocomplete="off">
-            </div>
-
-            <button type=>Enviar</button>
-        </form>
-    </body>
