@@ -1,5 +1,14 @@
 function exito() { 
 
+  btnActualizar.addEventListener('click', () => {
+    if (.style.display === 'none') {
+      btnEliminar.style.display = 'block';
+      btnActualiza.s
+    } else {
+      miActualizar.style.display = 'none';
+    }
+  });
+
 const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
       confirmButton: "btn btn-success",

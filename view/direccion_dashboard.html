@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="/view/sweetalert2-main/src/sweetalert2.scss">
   <script src="/view/jquery/jquery-3.7.1.min.js"></script>
   <script src="/view/fontawesome/js/all.min.js"></script>
-  <script src="/view/dataTables/button.bootstrap5.js">
+  <script src="/view/dataTables/button.bootstrap5.js"></script>
   <script src="/view/dataTables/button.bootstrap.js"></script>
   <script src="/view/dataTables/dataTables.js"></script>
   <script src="/view/dataTables/dataTables.html5.js"></script>
@@ -35,10 +35,12 @@
         <h1 class="m-0 text-uppercase  text-white">  E.B.N "Villa Bolívar"</h1>
       </a>
     
-      <div class="collapse navbar-collapse justify-content-end px-lg-6" id="navbarCollapse" style= border-radius: 40px 0px 40px 0px; >
+      <div class="collapse navbar-collapse justify-content-end px-lg-6" id="navbarCollapse" style= "border-radius:40px 0px 40px 0px;" >
         <div class="navbar-nav mx-auto py-0">
   
-       
+          <a href="direccion_dashboard.html" class=" px-lg-15 btn btn-success text-white "><spam  class="fa fa-sticky-note"></spam>Registrar</a>
+          <a href="direccion_actualizar.html" class=" px-lg-15 btn btn-primary text-white "><spam  class="fa  fa-refresh" aria-hidden="true"></spam> Actualizar</a>
+          <a href="direccion.eliminar.html" class=" px-lg-15 btn btn-danger text-white "><spam  class="fa fa-eraser" aria-hidden="true"></spam>Eliminar</a>
     
         </div class="nav nav-item">
 
@@ -96,7 +98,7 @@
   <div id="wrapper fadeInDown">
     
 
-      <p> <h1 class="display-4 text-start panel login-title d-inline-block" style="margin-right: 40pc;" >Registrar Alumno</h1></p>
+      <p> <h1 class="display-4 text-start panel login-title d-inline-block" style="margin-right: 40pc;" >Registrar </h1></p>
   
 
   <div class="" class="col-3 d-flex p-2 ">
@@ -106,10 +108,6 @@
     </div>
 
   <div class="justify-content-star d-flex">
-      <p> <h1 class="sm-1 text-start panel login-title d-inline-block btn btn-primary text-white" onclick="cambiarTablas('Actualizar')"> <spam  class="fa  fa-refresh" aria-hidden="true"></spam>Actualizar </h1></p>
-
-      <p> <h1 class="sm-1 text-start panel login-title d-inline-block btn btn-danger text-white" onclick="cambiarTablas('Eliminar')"> <spam  class="fa fa-eraser" aria-hidden="true"></spam>Eliminar </h1></p>
-  </div>
 
   </div>
 
@@ -178,133 +176,6 @@
 
 
     
-
-<!-----------------------------ACTUALIZAR-------------------------------->
-<div id="Actualizar" style="display: none;"
-
-<p> <h1 class="display-4 text-start panel login-title d-inline-block" style="margin-right: 40pc;" ><spam class="fa fa-address-book " aria-hidden="true"></spam>Actualizar registro de alumno</h1></p>
-  
-
-  <div class="" class="col-3 d-flex p-2 ">
-
-      <p> <h1 class="sm-1 text-end panel login-title d-inline-block btn btn-warning text-white justify-content-end" onclick="cambiarTablas('Notas')"  > <spam  class="fa fa-sticky-note"height="20px"  aria-hidden="true"></spam>Notas </h1></p>
-  
-      <p> <h1 class="sm-1 text-start panel login-title d-inline-block btn btn-primary text-white" onclick="cambiarTablas ('Actualizar')"> <spam  class="fa  fa-refresh" aria-hidden="true"></spam>Actualizar </h1></p>
-
-      <p> <h1 class="sm-1 text-start panel login-title d-inline-block btn btn-danger text-white" onclick="cambiarTablas ('Eliminar')"> <spam  class="fa fa-eraser" aria-hidden="true"></spam>Eliminar </h1></p>
-
-    </div>
-
-      <form action='../controller/alumno.php' method='POST' class=" form-control card justify-content-center login-box"  style="margin-top: 40px;"> 
-
-          <div class="panel login-box">
-              <div class="panel login-body">
-      
-                
-              <div class="mb-3 row">
-                  <label for="inputText" for="ci_escolar" class="col-sm-2 col-form-label text-black"> <spam class="fa fa-id-card" aria-hidden="true"></spam>Cedula escolar</label>
-                  <div class="col-sm-10">
-                    <input type="text" id="ci_escolar" name="ci_escolar" class="form-control" required>
-                  </div>
-                </div>
-
-                <div class="mb-3 row">
-                  <label for="inputPassword" for="nombre" class="col-sm-2 col-form-label text-black">  <spam class="fa fa-user"  aria-hidden="true"></spam>Nombre </label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nombre" name="nombre" required>
-                  </div>
-                </div>
-      
-                <div class="mb-3 row">
-                  <label for="inputText" for="apellido" class="col-sm-2 col-form-label ">  <spam class="fa fa-user"  aria-hidden="true"></spam>Apellido </label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="apellido" name="apellido" required> 
-                  </div>
-                </div>
-      
-                <div class="mb-3 row">
-                  <label for="inputText"  for="genero" class="col-sm-2 col-form-label "><spam  class="fa fa-venus-mars" aria-hidden="true"></spam>Genero</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="genero" name="genero" required>
-                  </div>
-                </div>
-      
-                <div class="mb-3 row">
-                  <label for="inputPassword" for="fecha_nac"  class="col-sm-2 col-form-label "><spam class="fa fa-calendar" aria-hidden="true"></spam> Fecha de nacimiento </label>
-                  <div class="col-sm-10">
-                    <input type="date" class="form-control" id="fecha_nac" name="fecha_nac" required >
-                  </div>
-                </div>
-      
-                <div class="mb-3 row">
-                  <label for="inputText" for="lugar_nac" class="col-sm-2 col-form-label ">   <spam class="fa fa-map " aria-hidden="true"></spam>Lugar de nacimiento </label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="lugar_nac" name="lugar_nac" required>
-                  </div>
-                </div>
-      
-      <div class="btn btn-primary  justify-content-center">
-        <a  type="submit" name="3" value="Actualizar"  class="btn btn-primary py-2 px-4 d-none d-lg-block" onclick="btn_actualizar" id="Actualizar" style="border-radius: 25x 25x 25px 25px" >Actualizar  </a>
-
-
-
-      </div>
-          </div>
-      
-      
-      </form>
-
-    </div>
-  </div>
-<!-----------------------FIN_ACTUALIZAR--------------------------------->
-
-
-
-<!-----------------------ELIMINAR------------------------------------->
-<div id="Eliminar" style="display: none;"
-
-<p> <h1 class="display-4 text-start panel login-title d-inline-block" style="margin-right: 40pc;" ><spam class="fa fa-address-book " aria-hidden="true"></spam>Eliminar registro de alumno</h1></p>
-  
-
-  <div class="" class="col-3 d-flex p-2 ">
-
-      <p> <h1 class="sm-1 text-end panel login-title d-inline-block btn btn-warning text-white justify-content-end" onclick="cambiarTablas('Notas')"  > <spam  class="fa fa-sticky-note"height="20px"  aria-hidden="true"></spam>Notas </h1></p>
-  
-      <p> <h1 class="sm-1 text-start panel login-title d-inline-block btn btn-primary text-white" onclick="cambiarTablas ('Actualizar')"> <spam  class="fa  fa-refresh" aria-hidden="true"></spam>Actualizar </h1></p>
-
-      <p> <h1 class="sm-1 text-start panel login-title d-inline-block btn btn-danger text-white" onclick="cambiarTablas ('Eliminar')"> <spam  class="fa fa-eraser" aria-hidden="true"></spam>Eliminar </h1></p>
-
-    </div>
-
-      <form action='../controller/alumno.php' method='POST' class=" form-control card justify-content-center login-box"  style="margin-top: 40px;"> 
-
-          <div class="panel login-box">
-              <div class="panel login-body">
-      
-                
-              <div class="mb-3 row">
-                  <label for="inputText" for="ci_escolar" class="col-sm-2 col-form-label text-black"> <spam class="fa fa-id-card" aria-hidden="true"></spam>Cedula escolar</label>
-                  <div class="col-sm-10">
-                    <input type="text" id="ci_escolar" name="ci_escolar" class="form-control" required>
-                  </div>
-                </div>
-
-      <div class="btn btn-primary  justify-content-center">
-        <a  type="submit" name="4" value="Eliminar"  class="btn btn-primary py-2 px-4 d-none d-lg-block" onclick="btn_eliminar" id="Eliminar" style="border-radius: 25x 25x 25px 25px" >Eliminar  </a>
-
-
-
-      </div>
-          </div>
-      
-      
-      </form>
-
-    </div>
-  </div>
-<!------------------------------------ELIMINAR--------------------------------------------->
-
-
 
 <!---========================= FIN_ALUMNOS===================================================--->
 
